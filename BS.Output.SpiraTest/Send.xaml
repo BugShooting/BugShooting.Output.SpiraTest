@@ -15,8 +15,6 @@
   <StackPanel Grid.IsSharedSizeScope="True" Margin="4">
     <TextBlock x:Name="Url" Margin="4" TextWrapping="Wrap" />
     <Separator Margin="4" />
-    <RadioButton x:Name="NewIssue" Content="New issue" Margin="4" Checked="NewIssue_CheckedChanged" Unchecked="NewIssue_CheckedChanged" />
-    <RadioButton x:Name="AttachToIssue" Content="Attach to issue" Margin="4" />
     <Grid x:Name="ProjectControls" Margin="4">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
@@ -25,29 +23,29 @@
       <Label Grid.Column="0">Project</Label>
       <ComboBox x:Name="ProjectComboBox" Grid.Column="1" SelectedValuePath="ProjectID" local:Validation.Required="True" />
     </Grid>
-    <Grid x:Name="SummaryControls" Margin="4">
+    <Grid x:Name="ItemTypeControls" Margin="4">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
-      <Label Grid.Column="0">Summary</Label>
-      <TextBox x:Name="SummaryTextBox" Grid.Column="1" VerticalContentAlignment="Center" local:Validation.Required="True" />
+      <Label Grid.Column="0">Type</Label>
+      <ComboBox x:Name="ItemTypeComboBox" Grid.Column="1" SelectedValuePath="ProjectID" local:Validation.Required="True" />
     </Grid>
-    <Grid x:Name="DescriptionControls" Margin="4">
+    <Grid x:Name="ItemIDControls" Margin="4">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
-      <Label Grid.Column="0">Description</Label>
-      <TextBox x:Name="DescriptionTextBox" Grid.Column="1" VerticalContentAlignment="Center" MaxLines="5" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" local:Validation.Required="True" />
+      <Label Grid.Column="0">ID</Label>
+      <TextBox x:Name="ItemIDTextBox" Grid.Column="1" VerticalContentAlignment="Center" PreviewTextInput="ItemID_PreviewTextInput" local:Validation.Required="True" />
     </Grid>
-    <Grid x:Name="IssueIDControls" Margin="4">
+    <Grid x:Name="CommentControls" Margin="4">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
-      <Label Grid.Column="0">Issue ID</Label>
-      <TextBox x:Name="IssueIDTextBox" Grid.Column="1" VerticalContentAlignment="Center" PreviewTextInput="IssueID_PreviewTextInput" local:Validation.Required="True" />
+      <Label Grid.Column="0">Comment</Label>
+      <TextBox x:Name="CommentTextBox" Grid.Column="1" VerticalContentAlignment="Center" MaxLines="5" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" local:Validation.Required="True" />
     </Grid>
     <Grid Margin="4">
       <Grid.ColumnDefinitions>

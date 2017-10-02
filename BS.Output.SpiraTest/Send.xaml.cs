@@ -10,126 +10,72 @@ namespace BS.Output.SpiraTest
   partial class Send : Window
   {
  
-    public Send(string url, string lastProjectID, string lastIssueID,  string fileName)
+    public Send(string url, int lastProjectID, int lastItemType, int lastItemID,  string fileName)
     {
       InitializeComponent();
       
-      //List<ProjectItem> projectItems = new List<ProjectItem>();
-      //InitProjects(projectItems, projects, String.Empty);
+      // TODO
       //ProjectComboBox.ItemsSource = projectItems;
 
+
+
       Url.Text = url;
-      NewIssue.IsChecked = true;
       ProjectComboBox.SelectedValue = lastProjectID;
-      IssueIDTextBox.Text = lastIssueID;
+      ItemTypeComboBox.SelectedValue = lastItemType;
+      ItemIDTextBox.Text = lastItemID.ToString();
       FileNameTextBox.Text = fileName;
 
       ProjectComboBox.SelectionChanged += ValidateData;
-      SummaryTextBox.TextChanged += ValidateData;
-      DescriptionTextBox.TextChanged += ValidateData;
-      IssueIDTextBox.TextChanged += ValidateData;
+      ItemTypeComboBox.SelectionChanged += ValidateData;
+      ItemIDTextBox.TextChanged += ValidateData;
+      CommentTextBox.TextChanged += ValidateData;
       FileNameTextBox.TextChanged += ValidateData;
       ValidateData(null, null);
 
     }
 
-    public bool CreateNewIssue
+    public int ProjectID
     {
-      get { return NewIssue.IsChecked.Value; }
-    }
- 
-    public string ProjectID
-    {
-      get { return (string)ProjectComboBox.SelectedValue; }
-    }
-      
-    public string Summary
-    {
-      get { return SummaryTextBox.Text; }
+      get { return (int)ProjectComboBox.SelectedValue; }
     }
 
-    public string Description
+    public int ItemType
     {
-      get { return DescriptionTextBox.Text; }
+      get { return (int)ItemTypeComboBox.SelectedValue; }
     }
 
-    public string IssueID
+    public string ItemID
     {
-      get { return IssueIDTextBox.Text; }
+      get { return ItemIDTextBox.Text; }
     }
 
+    public string Comment
+    {
+      get { return CommentTextBox.Text; }
+    }
+    
     public string FileName
     {
       get { return FileNameTextBox.Text; }
     }
 
-    private void NewIssue_CheckedChanged(object sender, EventArgs e)
-    {
-
-      if (NewIssue.IsChecked.Value)
-      {
-        ProjectControls.Visibility = Visibility.Visible;
-        SummaryControls.Visibility = Visibility.Visible;
-        DescriptionControls.Visibility = Visibility.Visible;
-        IssueIDControls.Visibility = Visibility.Collapsed;
-
-        SummaryTextBox.SelectAll();
-        SummaryTextBox.Focus();
-      }
-      else
-      {
-        ProjectControls.Visibility = Visibility.Collapsed;
-        SummaryControls.Visibility = Visibility.Collapsed;
-        DescriptionControls.Visibility = Visibility.Collapsed;
-        IssueIDControls.Visibility = Visibility.Visible;
-        
-        IssueIDTextBox.SelectAll();
-        IssueIDTextBox.Focus();
-      }
-
-      ValidateData(null, null);
-
-    }
-
-    private void IssueID_PreviewTextInput(object sender, TextCompositionEventArgs e)
+    private void ItemID_PreviewTextInput(object sender, TextCompositionEventArgs e)
     {
       e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
     }
     
     private void ValidateData(object sender, EventArgs e)
     {
-      OK.IsEnabled = ((CreateNewIssue && Validation.IsValid(ProjectComboBox) && Validation.IsValid(SummaryTextBox) && Validation.IsValid(DescriptionTextBox)) ||
-                      (!CreateNewIssue && Validation.IsValid(IssueIDTextBox))) &&
+      OK.IsEnabled = Validation.IsValid(ProjectComboBox) && 
+                     Validation.IsValid(ItemTypeComboBox) && 
+                     Validation.IsValid(ItemIDTextBox) &&
+                     Validation.IsValid(CommentTextBox) &&
                      Validation.IsValid(FileNameTextBox);
     }
 
     private void OK_Click(object sender, RoutedEventArgs e)
     {
       this.DialogResult = true;
-    }
-
-  }
-
-  internal class ProjectItem
-  {
-    
-    private string projectID;
-    private string fullName;
-
-    public ProjectItem(string projectID, string fullName)
-    {
-      this.projectID = projectID;
-      this.fullName = fullName;
-    }
-
-    public string ProjectID
-    {
-      get { return projectID; }
-    }
-
-    public override string ToString()
-    {
-      return fullName;
     }
 
   }
