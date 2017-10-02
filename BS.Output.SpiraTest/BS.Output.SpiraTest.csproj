@@ -55,6 +55,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\SpiraTest.SoapService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Credentials.xaml.cs">
       <DependentUpon>Credentials.xaml</DependentUpon>
     </Compile>
@@ -81,6 +86,218 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteArtifactSubscription.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteAssociation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteAutomatedTestRun.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteAutomationEngine.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteAutomationHost.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteBuild.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteComment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteComponent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteCustomList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteCustomListValue.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteCustomProperty.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteDataMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteDataSyncSystem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteDocument.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteDocumentFolder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteDocumentType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteDocumentVersion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteHistoryChange.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteHistoryChangeSet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteIncident.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteIncidentPriority.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteIncidentSeverity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteIncidentStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteIncidentType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteLinkedArtifact.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteManualTestRun.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteMessageInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteProject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteProjectArtifact.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteProjectRole.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteProjectUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteRelease.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteReleaseStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteReleaseTestCaseMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteReleaseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteRequirement.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteRequirementStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteRequirementStep.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteRequirementTestCaseMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteRequirementType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteSavedFilter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteSetting.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteSourceCodeBranch.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteSourceCodeFile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteSourceCodeFolder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteSourceCodeRevision.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTask.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTaskFolder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTaskStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTaskType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTestCase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTestCaseFolder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTestCaseParameter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTestCaseStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTestCaseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTestRun.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTestSet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTestSetFolder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTestSetParameter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTestSetTestCaseMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTestSetTestCaseParameter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTestStep.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTestStepParameter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteUserMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteVersion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteWorkflowCustomProperty.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteWorkflowField.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\BS.Output.SpiraTest.SpiraTest.SoapService.RemoteWorkflowTransition.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SpiraTest.SoapService\SoapService.wsdl" />
     <None Include="Resources\logo_64.png" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +316,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\SpiraTest.SoapService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SpiraTest.SoapService\SoapService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SpiraTest.SoapService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SpiraTest.SoapService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SpiraTest.SoapService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

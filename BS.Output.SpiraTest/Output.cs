@@ -11,8 +11,9 @@
     string fileName;
     string fileFormat;
     bool openItemInBrowser;
-    string lastProjectID;
-    string lastIssueID;
+    int lastProjectID;
+    int lastItemType;
+    int lastItemID;
 
     public Output(string name, 
                   string url, 
@@ -21,8 +22,9 @@
                   string fileName, 
                   string fileFormat,
                   bool openItemInBrowser, 
-                  string lastProjectID, 
-                  string lastIssueID)
+                  int lastProjectID,
+                  int lastItemType,
+                  int lastItemID)
     {
       this.name = name;
       this.url = url;
@@ -32,7 +34,8 @@
       this.fileFormat = fileFormat;
       this.openItemInBrowser = openItemInBrowser;
       this.lastProjectID = lastProjectID;
-      this.lastIssueID = lastIssueID;
+      this.lastItemType = lastItemType;
+      this.lastItemID = lastItemID;
     }
     
     public string Name
@@ -75,14 +78,19 @@
       get { return openItemInBrowser; }
     }
     
-    public string LastProjectID
+    public int LastProjectID
     {
       get { return lastProjectID; }
     }
 
-    public string LastIssueID
+    public int LastItemType
     {
-      get { return lastIssueID; }
+      get { return lastItemType; }
+    }
+
+    public int LastItemID
+    {
+      get { return lastItemID; }
     }
 
   }

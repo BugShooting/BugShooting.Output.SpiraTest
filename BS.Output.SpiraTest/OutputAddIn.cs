@@ -45,8 +45,9 @@ namespace BS.Output.SpiraTest
                                  "Screenshot",
                                  String.Empty, 
                                  true,
-                                 String.Empty,
-                                 "1");
+                                 1,
+                                 1,
+                                 1);
 
       return EditOutput(Owner, output);
 
@@ -70,7 +71,8 @@ namespace BS.Output.SpiraTest
                           edit.FileFormat,
                           edit.OpenItemInBrowser,
                           Output.LastProjectID,
-                          Output.LastIssueID);
+                          Output.LastItemType,
+                          Output.LastItemID);
       }
       else
       {
@@ -91,8 +93,9 @@ namespace BS.Output.SpiraTest
       outputValues.Add(new OutputValue("OpenItemInBrowser", Convert.ToString(Output.OpenItemInBrowser)));
       outputValues.Add(new OutputValue("FileName", Output.FileName));
       outputValues.Add(new OutputValue("FileFormat", Output.FileFormat));
-      outputValues.Add(new OutputValue("LastProjectID", Output.LastProjectID));
-      outputValues.Add(new OutputValue("LastIssueID", Output.LastIssueID));
+      outputValues.Add(new OutputValue("LastProjectID", Output.LastProjectID.ToString()));
+      outputValues.Add(new OutputValue("LastItemType", Output.LastItemType.ToString()));
+      outputValues.Add(new OutputValue("LastItemID", Output.LastItemID.ToString()));
 
       return outputValues;
       
@@ -108,8 +111,9 @@ namespace BS.Output.SpiraTest
                         OutputValues["FileName", "Screenshot"].Value, 
                         OutputValues["FileFormat", ""].Value,
                         Convert.ToBoolean(OutputValues["OpenItemInBrowser", Convert.ToString(true)].Value),
-                        OutputValues["LastProjectID", string.Empty].Value, 
-                        OutputValues["LastIssueID", "1"].Value);
+                        Convert.ToInt32(OutputValues["LastProjectID", "1"].Value),
+                        Convert.ToInt32(OutputValues["LastItemType", "1"].Value),
+                        Convert.ToInt32(OutputValues["LastItemID", "1"].Value));
 
     }
 
