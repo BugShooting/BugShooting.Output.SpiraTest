@@ -121,9 +121,33 @@ namespace BS.Output.SpiraTest
       // TODO
       return null;
 
-      SoapServiceClient spiraTestClient = new SoapServiceClient();
+      //SoapServiceClient spiraTestClient = new SoapServiceClient();
 
-      BS.Output.SpiraTest.SpiraTest.SoapService.RemoteProject r;
+      //BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTaskType tt;
+      
+      //await spiraTestClient.Connection_AuthenticateAsync(XXXXXXXXXXXXXXX, XXXXXXXXXXXX);
+
+      //await spiraTestClient.Connection_ConnectToProject(XXXXXXXXXXXXXXX);
+
+      //RemoteDocument document = new RemoteDocument();
+      //DataModel.Artifact.ArtifactTypeEnum.TestCase
+
+      //await spiraTestClient.Document_AddFileAsync
+
+      //await spiraTestClient.Connection_DisconnectAsync(XXXXXXXXXXXXXXX);
+
+
+      //  spiraTestClient.Incident_AddComments
+      //  spiraTestClient.Task_CreateComment
+      //  spiraTestClient.Requirement_CreateComment
+      //  spiraTestClient.Release_CreateComment()
+      //  spiraTestClient.TestCase_CreateComment
+      //  spiraTestClient.TestSet_CreateComment
+      //  spiraTestClient.TestRun_Save
+
+      //  spiraTestClient.Connection_ConnectToProject(XXXXXXXXXXXXXXX)
+
+      //BS.Output.SpiraTest.SpiraTest.SoapService.RemoteProject r;
       
 
     }
