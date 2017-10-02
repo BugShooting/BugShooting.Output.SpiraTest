@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿using BS.Output.SpiraTest.SpiraTest.SoapService;
+using System;
 using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Input;
 
 namespace BS.Output.SpiraTest
 {
   partial class Send : Window
   {
  
-    public Send(string url, int lastProjectID, int lastItemType, int lastItemID,  string fileName)
+    public Send(string url, int lastProjectID, int lastItemType, int lastItemID, RemoteProject[] projects, string fileName)
     {
       InitializeComponent();
-      
+
+      ProjectComboBox.ItemsSource = projects;
       // TODO
-      //ProjectComboBox.ItemsSource = projectItems;
-
-
+      //ItemTypeComboBox.ItemsSource = itemTypes;
 
       Url.Text = url;
       ProjectComboBox.SelectedValue = lastProjectID;

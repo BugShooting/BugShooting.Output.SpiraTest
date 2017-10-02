@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.ServiceModel;
-using System.Web;
+using BS.Output.SpiraTest.SpiraTest.SoapService;
 using System.Threading.Tasks;
 
 namespace BS.Output.SpiraTest
@@ -121,6 +120,11 @@ namespace BS.Output.SpiraTest
     {
       // TODO
       return null;
+
+      SoapServiceClient spiraTestClient = new SoapServiceClient();
+
+      BS.Output.SpiraTest.SpiraTest.SoapService.RemoteProject r;
+      
 
     }
       

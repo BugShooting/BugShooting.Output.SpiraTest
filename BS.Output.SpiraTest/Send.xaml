@@ -15,15 +15,15 @@
   <StackPanel Grid.IsSharedSizeScope="True" Margin="4">
     <TextBlock x:Name="Url" Margin="4" TextWrapping="Wrap" />
     <Separator Margin="4" />
-    <Grid x:Name="ProjectControls" Margin="4">
+    <Grid Margin="4">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
       <Label Grid.Column="0">Project</Label>
-      <ComboBox x:Name="ProjectComboBox" Grid.Column="1" SelectedValuePath="ProjectID" local:Validation.Required="True" />
+      <ComboBox x:Name="ProjectComboBox" Grid.Column="1" SelectedValuePath="ProjectId" DisplayMemberPath="Name" local:Validation.Required="True" />
     </Grid>
-    <Grid x:Name="ItemTypeControls" Margin="4">
+    <Grid Margin="4">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
         <ColumnDefinition Width="*"/>
@@ -31,7 +31,7 @@
       <Label Grid.Column="0">Type</Label>
       <ComboBox x:Name="ItemTypeComboBox" Grid.Column="1" SelectedValuePath="ProjectID" local:Validation.Required="True" />
     </Grid>
-    <Grid x:Name="ItemIDControls" Margin="4">
+    <Grid Margin="4">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
         <ColumnDefinition Width="*"/>
@@ -39,7 +39,7 @@
       <Label Grid.Column="0">ID</Label>
       <TextBox x:Name="ItemIDTextBox" Grid.Column="1" VerticalContentAlignment="Center" PreviewTextInput="ItemID_PreviewTextInput" local:Validation.Required="True" />
     </Grid>
-    <Grid x:Name="CommentControls" Margin="4">
+    <Grid Margin="4">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
         <ColumnDefinition Width="*"/>
