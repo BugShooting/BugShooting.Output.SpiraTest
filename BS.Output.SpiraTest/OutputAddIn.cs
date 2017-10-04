@@ -225,8 +225,7 @@ namespace BS.Output.SpiraTest
                                               send.ProjectID,
                                               send.ItemType,
                                               send.ItemID));
-
-        
+                  
         }
 
       }
