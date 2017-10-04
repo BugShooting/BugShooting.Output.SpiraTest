@@ -1,6 +1,18 @@
 ﻿namespace BS.Output.SpiraTest
 {
 
+  public enum ItemType
+  {
+    Requirement = 1,
+    TestCase = 2,
+    Incident = 3,
+    Release = 4,
+    TestRun = 5,
+    Task = 6,
+    TestStep = 7,
+    TestSet = 8
+  }
+
   public class Output: IOutput 
   {
     
@@ -12,7 +24,7 @@
     string fileFormat;
     bool openItemInBrowser;
     int lastProjectID;
-    int lastItemType;
+    ItemType lastItemType;
     int lastItemID;
 
     public Output(string name, 
@@ -23,7 +35,7 @@
                   string fileFormat,
                   bool openItemInBrowser, 
                   int lastProjectID,
-                  int lastItemType,
+                  ItemType lastItemType,
                   int lastItemID)
     {
       this.name = name;
@@ -83,7 +95,7 @@
       get { return lastProjectID; }
     }
 
-    public int LastItemType
+    public ItemType LastItemType
     {
       get { return lastItemType; }
     }

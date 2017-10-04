@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using BS.Output.SpiraTest.SpiraTest.SoapService;
 using System.Threading.Tasks;
+using System.ServiceModel;
 
 namespace BS.Output.SpiraTest
 {
@@ -45,7 +46,7 @@ namespace BS.Output.SpiraTest
                                  String.Empty, 
                                  true,
                                  1,
-                                 1,
+                                 ItemType.Incident,
                                  1);
 
       return EditOutput(Owner, output);
@@ -104,53 +105,131 @@ namespace BS.Output.SpiraTest
     {
 
       return new Output(OutputValues["Name", this.Name].Value,
-                        OutputValues["Url", ""].Value, 
+                        OutputValues["Url", ""].Value,
                         OutputValues["UserName", ""].Value,
-                        OutputValues["Password", ""].Value, 
-                        OutputValues["FileName", "Screenshot"].Value, 
+                        OutputValues["Password", ""].Value,
+                        OutputValues["FileName", "Screenshot"].Value,
                         OutputValues["FileFormat", ""].Value,
                         Convert.ToBoolean(OutputValues["OpenItemInBrowser", Convert.ToString(true)].Value),
                         Convert.ToInt32(OutputValues["LastProjectID", "1"].Value),
-                        Convert.ToInt32(OutputValues["LastItemType", "1"].Value),
+                        (ItemType)Enum.Parse(typeof(ItemType), OutputValues["LastItemType", "1"].Value),
                         Convert.ToInt32(OutputValues["LastItemID", "1"].Value));
 
     }
 
     protected override async Task<V3.SendResult> Send(IWin32Window Owner, Output Output, V3.ImageData ImageData)
     {
-      // TODO
-      return null;
 
-      //SoapServiceClient spiraTestClient = new SoapServiceClient();
+      try
+      {
 
-      //BS.Output.SpiraTest.SpiraTest.SoapService.RemoteTaskType tt;
-      
-      //await spiraTestClient.Connection_AuthenticateAsync(XXXXXXXXXXXXXXX, XXXXXXXXXXXX);
+        HttpBindingBase binding;
+        if (Output.Url.StartsWith("https", StringComparison.InvariantCultureIgnoreCase))
+        {
+          binding = new BasicHttpsBinding();
+        }
+        else
+        {
+          binding = new BasicHttpBinding();
+        }
+        binding.MaxBufferSize = int.MaxValue;
+        binding.MaxReceivedMessageSize = int.MaxValue;
 
-      //await spiraTestClient.Connection_ConnectToProject(XXXXXXXXXXXXXXX);
+        SoapServiceClient spiraTestClient = new SoapServiceClient(binding, new EndpointAddress(Output.Url + "/Services/v5_0/SoapService.svc"));
 
-      //RemoteDocument document = new RemoteDocument();
-      //DataModel.Artifact.ArtifactTypeEnum.TestCase
+        string userName = Output.UserName;
+        string password = Output.Password;
+        bool showLogin = string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password);
+        bool rememberCredentials = false;
 
-      //await spiraTestClient.Document_AddFileAsync
+        string fileName = V3.FileHelper.GetFileName(Output.FileName, Output.FileFormat, ImageData);
 
-      //await spiraTestClient.Connection_DisconnectAsync(XXXXXXXXXXXXXXX);
+        while (true)
+        {
+
+          if (showLogin)
+          {
+
+            // Show credentials window
+            Credentials credentials = new Credentials(Output.Url, userName, password, rememberCredentials);
+
+            var credentialsOwnerHelper = new System.Windows.Interop.WindowInteropHelper(credentials);
+            credentialsOwnerHelper.Owner = Owner.Handle;
+
+            if (credentials.ShowDialog() != true)
+            {
+              return new V3.SendResult(V3.Result.Canceled);
+            }
+
+            userName = credentials.UserName;
+            password = credentials.Password;
+            rememberCredentials = credentials.Remember;
+
+          }
+
+          if (! await spiraTestClient.Connection_AuthenticateAsync(userName, password))
+          {
+            showLogin = true;
+            continue;
+          }
 
 
-      //  spiraTestClient.Incident_AddComments
-      //  spiraTestClient.Task_CreateComment
-      //  spiraTestClient.Requirement_CreateComment
-      //  spiraTestClient.Release_CreateComment()
-      //  spiraTestClient.TestCase_CreateComment
-      //  spiraTestClient.TestSet_CreateComment
-      //  spiraTestClient.TestRun_Save
+          // Get available projects
+          RemoteProject[] projects = await spiraTestClient.Project_RetrieveAsync();
+          
 
-      //  spiraTestClient.Connection_ConnectToProject(XXXXXXXXXXXXXXX)
+          // Show send window
+          Send send = new Send(Output.Url, Output.LastProjectID, Output.LastItemType, Output.LastItemID, projects, fileName);
 
-      //BS.Output.SpiraTest.SpiraTest.SoapService.RemoteProject r;
-      
+          var sendOwnerHelper = new System.Windows.Interop.WindowInteropHelper(send);
+          sendOwnerHelper.Owner = Owner.Handle;
+
+          if (!send.ShowDialog() == true)
+          {
+            return new V3.SendResult(V3.Result.Canceled);
+          }
+          
+
+          // Upload file
+          string fullFileName = String.Format("{0}.{1}", send.FileName, V3.FileHelper.GetFileExtention(Output.FileFormat));
+          byte[] fileBytes = V3.FileHelper.GetFileBytes(Output.FileFormat, ImageData);
+
+          RemoteDocument document = new RemoteDocument();
+          document.FilenameOrUrl = fullFileName;
+         
+          await spiraTestClient.Document_AddFileAsync(document, fileBytes);
+          await spiraTestClient.Document_AddToArtifactIdAsync((int)send.ItemType, send.ItemID, document.AttachmentId.Value);
+
+
+          // Open item in browser
+          if (Output.OpenItemInBrowser)
+          {
+            V3.WebHelper.OpenUrl(String.Format("{0}/{1}/{2}/{3}.aspx", Output.Url, send.ProjectID, send.ItemType.ToString(), send.ItemID));
+          }
+
+
+          return new V3.SendResult(V3.Result.Success,
+                                   new Output(Output.Name,
+                                              Output.Url,
+                                              (rememberCredentials) ? userName : Output.UserName,
+                                              (rememberCredentials) ? password : Output.Password,
+                                              Output.FileName,
+                                              Output.FileFormat,
+                                              Output.OpenItemInBrowser,
+                                              send.ProjectID,
+                                              send.ItemType,
+                                              send.ItemID));
+
+        
+        }
+
+      }
+      catch (Exception ex)
+      {
+        return new V3.SendResult(V3.Result.Failed, ex.Message);
+      }
 
     }
-      
+
   }
 }

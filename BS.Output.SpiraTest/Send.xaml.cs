@@ -1,5 +1,6 @@
 ﻿using BS.Output.SpiraTest.SpiraTest.SoapService;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
@@ -9,13 +10,22 @@ namespace BS.Output.SpiraTest
   partial class Send : Window
   {
  
-    public Send(string url, int lastProjectID, int lastItemType, int lastItemID, RemoteProject[] projects, string fileName)
+    public Send(string url, int lastProjectID, ItemType lastItemType, int lastItemID, RemoteProject[] projects, string fileName)
     {
       InitializeComponent();
 
       ProjectComboBox.ItemsSource = projects;
-      // TODO
-      //ItemTypeComboBox.ItemsSource = itemTypes;
+      
+      List<ItemTypeItem> itemTypes = new List<ItemTypeItem>();
+      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.Incident, "Incident"));
+      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.Task, "Task"));
+      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.Requirement, "Requirement"));
+      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.Release, "Release"));
+      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.TestCase, "Test Case"));
+      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.TestSet, "Test Set"));
+      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.TestStep, "Test Step"));
+      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.TestRun, "Test Run"));
+      ItemTypeComboBox.ItemsSource = itemTypes;
 
       Url.Text = url;
       ProjectComboBox.SelectedValue = lastProjectID;
@@ -37,14 +47,14 @@ namespace BS.Output.SpiraTest
       get { return (int)ProjectComboBox.SelectedValue; }
     }
 
-    public int ItemType
+    public ItemType ItemType
     {
-      get { return (int)ItemTypeComboBox.SelectedValue; }
+      get { return (ItemType)ItemTypeComboBox.SelectedValue; }
     }
 
-    public string ItemID
+    public int ItemID
     {
-      get { return ItemIDTextBox.Text; }
+      get { return Convert.ToInt32(ItemIDTextBox.Text); }
     }
 
     public string Comment
@@ -74,6 +84,30 @@ namespace BS.Output.SpiraTest
     private void OK_Click(object sender, RoutedEventArgs e)
     {
       this.DialogResult = true;
+    }
+
+  }
+
+  internal class ItemTypeItem
+  {
+
+    ItemType itemType;
+    string name;
+
+    public ItemTypeItem(ItemType itemType, string name)
+    {
+      this.itemType = itemType;
+      this.name = name;
+    }
+
+    public ItemType ItemType
+    {
+      get { return itemType; }
+    }
+
+    public string Name()
+    {
+      return name;
     }
 
   }
