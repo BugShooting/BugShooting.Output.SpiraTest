@@ -134,8 +134,10 @@ namespace BS.Output.SpiraTest
         }
         binding.MaxBufferSize = int.MaxValue;
         binding.MaxReceivedMessageSize = int.MaxValue;
+        binding.AllowCookies = true;
 
         SoapServiceClient spiraTestClient = new SoapServiceClient(binding, new EndpointAddress(Output.Url + "/Services/v5_0/SoapService.svc"));
+
 
         string userName = Output.UserName;
         string password = Output.Password;
