@@ -198,8 +198,12 @@ namespace BS.Output.SpiraTest
 
           RemoteDocument document = new RemoteDocument();
           document.FilenameOrUrl = fullFileName;
-         
-          await spiraTestClient.Document_AddFileAsync(document, fileBytes);
+          document.Description = send.Comment;
+
+          await spiraTestClient.Connection_ConnectToProjectAsync(send.ProjectID);
+
+          document = await spiraTestClient.Document_AddFileAsync(document, fileBytes);
+
           await spiraTestClient.Document_AddToArtifactIdAsync((int)send.ItemType, send.ItemID, document.AttachmentId.Value);
 
 

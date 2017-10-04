@@ -17,14 +17,14 @@ namespace BS.Output.SpiraTest
       ProjectComboBox.ItemsSource = projects;
       
       List<ItemTypeItem> itemTypes = new List<ItemTypeItem>();
-      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.Incident, "Incident"));
-      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.Task, "Task"));
-      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.Requirement, "Requirement"));
-      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.Release, "Release"));
-      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.TestCase, "Test Case"));
-      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.TestSet, "Test Set"));
-      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.TestStep, "Test Step"));
-      itemTypes.Add(new ItemTypeItem(BS.Output.SpiraTest.ItemType.TestRun, "Test Run"));
+      itemTypes.Add(new ItemTypeItem(ItemType.Incident, "Incident"));
+      itemTypes.Add(new ItemTypeItem(ItemType.Task, "Task"));
+      itemTypes.Add(new ItemTypeItem(ItemType.Requirement, "Requirement"));
+      itemTypes.Add(new ItemTypeItem(ItemType.Release, "Release"));
+      itemTypes.Add(new ItemTypeItem(ItemType.TestCase, "Test Case"));
+      itemTypes.Add(new ItemTypeItem(ItemType.TestSet, "Test Set"));
+      itemTypes.Add(new ItemTypeItem(ItemType.TestStep, "Test Step"));
+      itemTypes.Add(new ItemTypeItem(ItemType.TestRun, "Test Run"));
       ItemTypeComboBox.ItemsSource = itemTypes;
 
       Url.Text = url;
@@ -36,7 +36,6 @@ namespace BS.Output.SpiraTest
       ProjectComboBox.SelectionChanged += ValidateData;
       ItemTypeComboBox.SelectionChanged += ValidateData;
       ItemIDTextBox.TextChanged += ValidateData;
-      CommentTextBox.TextChanged += ValidateData;
       FileNameTextBox.TextChanged += ValidateData;
       ValidateData(null, null);
 
@@ -77,7 +76,6 @@ namespace BS.Output.SpiraTest
       OK.IsEnabled = Validation.IsValid(ProjectComboBox) && 
                      Validation.IsValid(ItemTypeComboBox) && 
                      Validation.IsValid(ItemIDTextBox) &&
-                     Validation.IsValid(CommentTextBox) &&
                      Validation.IsValid(FileNameTextBox);
     }
 
@@ -105,9 +103,9 @@ namespace BS.Output.SpiraTest
       get { return itemType; }
     }
 
-    public string Name()
+    public string Name
     {
-      return name;
+      get { return name; }
     }
 
   }

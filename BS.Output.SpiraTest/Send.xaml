@@ -29,7 +29,7 @@
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
       <Label Grid.Column="0">Type</Label>
-      <ComboBox x:Name="ItemTypeComboBox" Grid.Column="1" SelectedValuePath="Type" DisplayMemberPath="Name" local:Validation.Required="True" />
+      <ComboBox x:Name="ItemTypeComboBox" Grid.Column="1" SelectedValuePath="ItemType" DisplayMemberPath="Name" local:Validation.Required="True" />
     </Grid>
     <Grid Margin="4">
       <Grid.ColumnDefinitions>
@@ -45,7 +45,7 @@
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
       <Label Grid.Column="0">Comment</Label>
-      <TextBox x:Name="CommentTextBox" Grid.Column="1" VerticalContentAlignment="Center" MaxLines="5" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" local:Validation.Required="True" />
+      <TextBox x:Name="CommentTextBox" Grid.Column="1" VerticalContentAlignment="Center" MaxLines="5" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" />
     </Grid>
     <Grid Margin="4">
       <Grid.ColumnDefinitions>
