@@ -87,7 +87,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Connected Services\SoapService\BugShooting.Output.SpiraTest.SoapService.RemoteArtifactSubscription.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
