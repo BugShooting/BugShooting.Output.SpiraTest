@@ -7,6 +7,7 @@ using System.ServiceModel;
 using BS.Plugin.V3.Output;
 using BS.Plugin.V3.Common;
 using BS.Plugin.V3.Utilities;
+using System.Linq;
 
 namespace BugShooting.Output.SpiraTest
 {
@@ -46,7 +47,7 @@ namespace BugShooting.Output.SpiraTest
                                  String.Empty, 
                                  String.Empty, 
                                  "Screenshot",
-                                 String.Empty, 
+                                 FileHelper.GetFileFormats().First().ID,
                                  true,
                                  1,
                                  ItemType.Incident,
@@ -71,7 +72,7 @@ namespace BugShooting.Output.SpiraTest
                           edit.UserName,
                           edit.Password,
                           edit.FileName,
-                          edit.FileFormat,
+                          edit.FileFormatID,
                           edit.OpenItemInBrowser,
                           Output.LastProjectID,
                           Output.LastItemType,
@@ -95,7 +96,7 @@ namespace BugShooting.Output.SpiraTest
       outputValues.Add("Password",Output.Password, true);
       outputValues.Add("OpenItemInBrowser", Convert.ToString(Output.OpenItemInBrowser));
       outputValues.Add("FileName", Output.FileName);
-      outputValues.Add("FileFormat", Output.FileFormat);
+      outputValues.Add("FileFormatID", Output.FileFormatID.ToString());
       outputValues.Add("LastProjectID", Output.LastProjectID.ToString());
       outputValues.Add("LastItemType", Output.LastItemType.ToString());
       outputValues.Add("LastItemID", Output.LastItemID.ToString());
@@ -112,7 +113,7 @@ namespace BugShooting.Output.SpiraTest
                         OutputValues["UserName", ""],
                         OutputValues["Password", ""],
                         OutputValues["FileName", "Screenshot"],
-                        OutputValues["FileFormat", ""],
+                        new Guid(OutputValues["FileFormatID", ""]),
                         Convert.ToBoolean(OutputValues["OpenItemInBrowser", Convert.ToString(true)]),
                         Convert.ToInt32(OutputValues["LastProjectID", "1"]),
                         (ItemType)Enum.Parse(typeof(ItemType), OutputValues["LastItemType", "1"]),
@@ -193,11 +194,12 @@ namespace BugShooting.Output.SpiraTest
           {
             return new SendResult(Result.Canceled);
           }
-          
+
 
           // Upload file
-          string fullFileName = String.Format("{0}.{1}", send.FileName, FileHelper.GetFileExtension(Output.FileFormat));
-          byte[] fileBytes = FileHelper.GetFileBytes(Output.FileFormat, ImageData);
+          IFileFormat fileFormat = FileHelper.GetFileFormat(Output.FileFormatID);
+          string fullFileName = String.Format("{0}.{1}", send.FileName, fileFormat.FileExtension);
+          byte[] fileBytes = FileHelper.GetFileBytes(Output.FileFormatID, ImageData);
 
           RemoteDocument document = new RemoteDocument();
           document.FilenameOrUrl = fullFileName;
@@ -223,7 +225,7 @@ namespace BugShooting.Output.SpiraTest
                                            (rememberCredentials) ? userName : Output.UserName,
                                            (rememberCredentials) ? password : Output.Password,
                                            Output.FileName,
-                                           Output.FileFormat,
+                                           Output.FileFormatID,
                                            Output.OpenItemInBrowser,
                                            send.ProjectID,
                                            send.ItemType,
